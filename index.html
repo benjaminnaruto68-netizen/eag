@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d1b">
+<title>Blockverse — Play Eaglercraft</title>
+<style>
+:root{--bg:#080d1b;--panel:#111a30;--line:rgba(153,177,255,.2);--text:#f4f7ff;--muted:#a5b2cd;--cyan:#65d8ff;--purple:#a78bfa;--green:#75f0b1}
+*{box-sizing:border-box}body{margin:0;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 10% 0%,#1a2d56 0,transparent 35%),radial-gradient(ellipse at 90% 10%,#251943 0,transparent 30%),var(--bg);min-height:100vh}
+.wrap{width:min(1180px,calc(100% - 28px));margin:auto}header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:11px;align-items:center;font-weight:900;letter-spacing:.06em}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#08101f;font-size:22px}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.16em}
+.status{font-size:12px;color:var(--green);border:1px solid rgba(117,240,177,.25);border-radius:50px;padding:8px 11px}
+.hero{padding:35px 0 22px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.045em;margin:10px 0}h1 span{color:var(--cyan)}.intro{color:var(--muted);line-height:1.6;margin:0;max-width:760px}
+.panel{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(14,22,42,.9);box-shadow:0 24px 80px rgba(0,0,0,.25)}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.025)}
+.controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}label{font-size:13px;color:var(--muted)}select,button,.linkbtn{font:inherit;border-radius:10px;border:1px solid var(--line);padding:10px 13px;background:#17223c;color:var(--text);text-decoration:none;cursor:pointer}
+button:hover,.linkbtn:hover,select:hover{border-color:var(--cyan)}.primary{background:linear-gradient(100deg,var(--cyan),#b6a3ff);color:#07101d;font-weight:850;border:0}.gameframe{width:100%;height:min(72vh,760px);min-height:420px;border:0;display:block;background:#05070d}
+.framewrap{position:relative;background:#05070d}.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;color:#cbd6ef;pointer-events:none;background:linear-gradient(135deg,rgba(8,13,27,.96),rgba(16,19,44,.93));z-index:1}.loading.hidden{display:none}.loading-inner{max-width:460px}.cube{font-size:48px;margin-bottom:12px}.loading h2{margin:0 0 8px;font-size:23px}.loading p{color:var(--muted);line-height:1.6;font-size:14px}
+.note{margin:14px 0 0;padding:14px 16px;border:1px solid rgba(101,216,255,.2);background:rgba(101,216,255,.055);border-radius:13px;color:#c9d7f1;font-size:13px;line-height:1.65}.note strong{color:white}.below{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 32px}.tip{padding:16px;border:1px solid var(--line);background:rgba(17,26,48,.6);border-radius:14px}.tip b{display:block;margin-bottom:6px}.tip span{font-size:13px;line-height:1.5;color:var(--muted)}footer{border-top:1px solid var(--line);padding:20px 0 28px;font-size:12px;line-height:1.7;color:var(--muted)}footer a{color:#c5d7ff}
+@media(max-width:700px){.status{display:none}.gameframe{height:65vh;min-height:390px}.below{grid-template-columns:1fr}.toolbar{align-items:flex-start}.controls{width:100%}.controls select{flex:1;min-width:150px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><span class="logo">▦</span><span>BLOCKVERSE<small>YOUR BROWSER GAME PORTAL</small></span></div>
+  <span class="status">● IN-PAGE GAME MODE</span>
+</header>
+<section class="hero">
+  <div class="eyebrow">One portal · Two classic versions</div>
+  <h1>Play inside <span>Blockverse.</span></h1>
+  <p class="intro">Choose a version and try loading Eaglercraft right here in the page. The game host must permit embedding; if it blocks this view, use the fallback link below the game.</p>
+</section>
+<section class="panel" aria-label="Eaglercraft game panel">
+  <div class="toolbar">
+    <div class="controls">
+      <label for="version">Game version</label>
+      <select id="version">
+        <option value="1.8.8">Eaglercraft 1.8.8</option>
+        <option value="1.5.2">Eaglercraft 1.5.2</option>
+      </select>
+      <button class="primary" id="load">▶ Load game here</button>
+    </div>
+    <div class="controls">
+      <button id="fullscreen">⛶ Fullscreen game</button>
+      <a class="linkbtn" id="fallback" href="https://dev.eaglercraft.com/play?version=1.8.8" target="_blank" rel="noopener noreferrer">Open separately ↗</a>
+    </div>
+  </div>
+  <div class="framewrap" id="framewrap">
+    <div class="loading" id="loading">
+      <div class="loading-inner">
+        <div class="cube">🧊</div>
+        <h2>Your game will appear here</h2>
+        <p>Choose your version and click <strong>Load game here</strong>. It may take a little while to start.</p>
+      </div>
+    </div>
+    <iframe class="gameframe" id="game" title="Eaglercraft browser game" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</section>
+<div class="note" id="statusnote"><strong>Important:</strong> This tries to embed the Eaglercraft website directly. Some websites send browser security rules that prevent being displayed inside another website. If you see a blank area or a refusal message, that is a restriction from the game host—not something you did wrong. The fallback opens the game in a separate tab.</div>
+<section class="below">
+  <div class="tip"><b>💻 Chromebook</b><span>Use Chrome, click inside the game to give it keyboard and mouse focus, and allow the page to finish loading.</span></div>
+  <div class="tip"><b>🎮 Controls</b><span>When the game loads, use its own on-screen instructions. Fullscreen may help once the game is running.</span></div>
+  <div class="tip"><b>🔒 Safe fallback</b><span>The separate-play link uses the Eaglercraft portal. This page does not copy or rehost its game files.</span></div>
+</section>
+<footer>
+  Blockverse is an independent fan-made portal and is not affiliated with Mojang or Microsoft. Eaglercraft is a community project. Use project-approved sources and follow applicable licenses and terms.
+  <br><a href="https://dev.eaglercraft.com/play" target="_blank" rel="noopener noreferrer">Eaglercraft play portal</a> · <a href="https://dev.eaglercraft.com/downloads" target="_blank" rel="noopener noreferrer">Project downloads</a>
+</footer>
+</div>
+<script>
+const version = document.getElementById('version');
+const game = document.getElementById('game');
+const loading = document.getElementById('loading');
+const fallback = document.getElementById('fallback');
+const statusnote = document.getElementById('statusnote');
+function gameUrl() {
+  return 'https://dev.eaglercraft.com/play?version=' + encodeURIComponent(version.value);
+}
+function syncFallback() { fallback.href = gameUrl(); }
+version.addEventListener('change', syncFallback);
+document.getElementById('load').addEventListener('click', () => {
+  loading.classList.add('hidden');
+  game.src = gameUrl();
+  syncFallback();
+  statusnote.innerHTML = '<strong>Loading:</strong> If the game does not appear after a short wait, the host may block embedding. Choose “Open separately” to play without leaving your portal permanently.';
+});
+document.getElementById('fullscreen').addEventListener('click', async () => {
+  try {
+    if (game.requestFullscreen) await game.requestFullscreen();
+    else statusnote.textContent = 'Fullscreen is not supported by this browser. Try opening the game separately.';
+  } catch (e) {
+    statusnote.textContent = 'Fullscreen was blocked by the browser. Try clicking inside the game first.';
+  }
+});
+syncFallback();
+</script>
+</body>
+</html>
