@@ -92,7 +92,7 @@ ctx.fillStyle="#8d6aff";ctx.fillRect(1130-camX,h-150,22,115);ctx.fillStyle="#d6c
 animation=requestAnimationFrame(draw);}
 draw();}
 function addTouchControls(){let old=document.getElementById("touchControls");if(old)old.remove();let wrap=document.createElement("div");wrap.id="touchControls";wrap.style.cssText="position:absolute;bottom:14px;left:14px;display:flex;gap:9px;z-index:5";for(const [label,key] of [["◀","arrowleft"],["▲","jump"],["▶","arrowright"]]){let b=document.createElement("button");b.textContent=label;b.style.cssText="width:52px;height:52px;border:1px solid #ffffff66;border-radius:14px;background:#142033cc;color:white;font-size:22px;touch-action:none";b.onpointerdown=e=>{e.preventDefault();keys[key]=true};b.onpointerup=b.onpointerleave=()=>keys[key]=false;wrap.appendChild(b);} $("stage").appendChild(wrap);}
-const originalLaunch=launch;$("launch").addEventListener("click",()=>{if(selected==="obby")addTouchControls();else{let t=document.getElementById("touchControls");if(t)t.remove();}});
+
 /* Three.js is loaded from a public CDN only for the optional 3D prototype. */
 function start3D(){
 let t=document.getElementById("threeScript");
