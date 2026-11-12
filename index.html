@@ -54,7 +54,7 @@ battle:{title:"Fortzone Battle Royale",art:"🪂",desc:"Drop into a 3D island ba
 let selected="eagler",running=false,animation=0,three=null;
 const $=id=>document.getElementById(id), frame=$("eaglerFrame"),canvas=$("gameCanvas"),threeCanvas=$("threeCanvas"),ctx=canvas.getContext("2d");
 const cards=[...document.querySelectorAll(".game-card")];
-function select(id){selected=id;cards.forEach(c=>c.classList.toggle("selected",c.dataset.game===id));const g=games[id];$("previewArt").textContent=g.art;$("previewTitle").textContent=g.title;$("previewDesc").textContent=g.desc;$("genre").textContent=g.genre;$("gameHeading").textContent=g.title;$("selectedState").textContent=id==="eagler"?"INSTALLED":"READY";$("gameHelp").textContent=g.help;$("launch").textContent="▶ PLAY "+g.title.toUpperCase();$("status").textContent=g.title+" selected. Press Play when ready."}
+function select(id){selected=id;cards.forEach(c=>c.classList.toggle("selected",c.dataset.game===id));const g=games[id];$("previewArt").textContent=g.art;$("previewTitle").textContent=g.title;$("previewDesc").textContent=g.desc;$("genre").textContent=g.genre;$("gameHeading").textContent=g.title;$("selectedState").textContent=id==="eagler"?"INSTALLED":"READY";$("gameHelp").textContent=g.help;$("status").textContent="Starting "+g.title+"…"}
 cards.forEach(c=>c.addEventListener("click",()=>{select(c.dataset.game);launch();}));
 function showStage(){ $("play-area").classList.add("visible");$("play-area").scrollIntoView({behavior:"smooth",block:"start"});}
 function stopGames(){running=false;cancelAnimationFrame(animation);if(three){three.stop();three=null;} }
