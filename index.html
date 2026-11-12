@@ -36,7 +36,7 @@ footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-siz
 <aside class="card"><div class="head"><h2>Selected game</h2><span id="selectedState">READY</span></div><div class="preview"><div class="scene" id="previewArt">🧱</div><h2 id="previewTitle">Eaglercraft 1.8</h2><p id="previewDesc">Launch your existing Eaglercraft 1.8 game file inside Blockverse.</p><div class="meta"><span id="genre">Sandbox</span><span>Browser game</span><span>Desktop + mobile</span></div><button class="launch" id="launch">▶ LAUNCH GAME</button></div></aside>
 </section>
 <section class="card play-area" id="play-area"><div class="toolbar"><strong>🎮 <span id="gameHeading">Eaglercraft 1.8</span></strong><div class="tools"><button id="openExternal" hidden>↗ Open game in new tab</button><button id="restart">↻ Restart</button><button id="full">⛶ Fullscreen</button><button id="hide">Hide game</button></div></div>
-<div class="stage" id="stage"><iframe id="eaglerFrame" title="Eaglercraft game" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" allowfullscreen></iframe><canvas class="game-canvas" id="gameCanvas"></canvas><canvas class="game-canvas" id="threeCanvas"></canvas></div>
+<div class="stage" id="stage"><iframe id="eaglerFrame" title="Eaglercraft game" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write; accelerometer; gyroscope" allowfullscreen></iframe><canvas class="game-canvas" id="gameCanvas"></canvas><canvas class="game-canvas" id="threeCanvas"></canvas></div>
 <div class="help" id="gameHelp">Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.</div>
 </section>
 <div class="status" id="status">Ready. Choose a game and press Launch Game.</div>
@@ -49,7 +49,7 @@ footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-siz
 const games={
 eagler:{title:"Eaglercraft 1.8",art:"🧱",desc:"Launch your existing Eaglercraft 1.8 game file inside Blockverse.",genre:"Sandbox",help:"Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.",file:"EaglercraftX_1.8_u53_Offline_Signed.html"},
 roblox:{title:"Roblox on now.gg",art:"🎮",desc:"Browse Roblox experiences through now.gg. Choose Play in browser on the now.gg page.",genre:"Roblox · Cloud gaming",help:"This opens the now.gg Roblox games page. If the page does not load inside Blockverse, use Open game in new tab. now.gg controls Roblox availability.",url:"https://now.gg/games/roblox-mini-games.html"},
-battle:{title:"Fortzone Battle Royale",art:"🪂",desc:"Drop into a 3D island battle, collect weapons and resources, build or break cover, and try to be the last player standing.",genre:"3D Battle Royale",help:"Fortzone is a browser game. Controls: WASD to move, Space to jump, C to crouch, mouse to aim and shoot, R to reload, M for map. If it does not load inside Blockverse, choose Open game in new tab.",url:"https://fortzone.games/"}
+battle:{title:"Fortzone Battle Royale",art:"🪂",desc:"Drop into a 3D island battle, collect weapons and resources, build or break cover, and try to be the last player standing.",genre:"3D Battle Royale",help:"Fortzone loads directly into the CrazyGames game player. Controls: WASD to move, Space to jump, C to crouch, mouse to aim and shoot, R to reload, M for map. If it does not load inside Blockverse, choose Open game in new tab.",url:"https://games.crazygames.com/en_US/fortzone-battle-royale-xkd/index.html?v=2.14",externalUrl:"https://www.crazygames.com/game/fortzone-battle-royale-xkd"}
 };
 let selected="eagler",running=false,animation=0,three=null;
 const $=id=>document.getElementById(id), frame=$("eaglerFrame"),canvas=$("gameCanvas"),threeCanvas=$("threeCanvas"),ctx=canvas.getContext("2d");
@@ -63,7 +63,7 @@ if(selected==="eagler"){frame.src=games.eagler.file;$("status").textContent="Ope
 if(selected==="roblox"){window.open(games.roblox.url,"_blank","noopener,noreferrer");$("status").textContent="Roblox opened in a new tab through now.gg. Return to this tab to choose another game.";return;}frame.src=games[selected].url;$("status").textContent="Loading "+games[selected].title+"… If the game is blocked inside this frame, choose Open game in new tab.";
 }
 $("launch").addEventListener("click",launch);
-$("openExternal").addEventListener("click",()=>{if(games[selected].url)window.open(games[selected].url,"_blank","noopener,noreferrer");});
+$("openExternal").addEventListener("click",()=>{if(games[selected].url)window.open(games[selected].externalUrl||games[selected].url,"_blank","noopener,noreferrer");});
 $("hide").addEventListener("click",()=>{$("play-area").classList.remove("visible");stopGames();});
 $("restart").addEventListener("click",()=>{if(selected==="eagler"){frame.src=games.eagler.file;}else launch();});
 $("full").addEventListener("click",()=>{const target=frame;if(target.requestFullscreen)target.requestFullscreen();});
