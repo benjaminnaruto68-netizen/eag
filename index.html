@@ -4,114 +4,127 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#10151f">
-<title>Blockverse — Game Launcher</title>
+<title>Blockverse — Game Hub</title>
 <style>
-:root{color-scheme:dark;--bg:#10151f;--panel:#1a222f;--panel2:#222d3c;--line:#354253;--text:#f3f6fa;--muted:#aab6c5;--green:#55d879;--green2:#37b85b;--blue:#7ec9ff;--gold:#f1c75b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 70% -15%,#293b52 0,transparent 43%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,a,select{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}.shell{width:min(1240px,calc(100% - 30px));margin:auto}header{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #ffffff14}.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.09em}.logo{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,#6fda91,#2f9d58);color:#092414;font-size:24px;box-shadow:0 7px 25px #55d87922}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.15em;font-weight:700;margin-top:3px}.nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.nav a{padding:10px 12px;border-radius:9px;color:#c7d0dc;font-size:13px}.nav a.active,.nav a:hover{background:#ffffff0e;color:white}.hero{padding:28px 0 20px;display:flex;align-items:end;justify-content:space-between;gap:20px}.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:850}.hero h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;line-height:1.06;margin:8px 0}.hero p{max-width:650px;color:var(--muted);line-height:1.6;margin:0;font-size:14px}.tiny-pill{white-space:nowrap;border:1px solid #55d87955;color:#9aefb0;background:#55d8790d;padding:9px 12px;border-radius:999px;font-size:12px}.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(290px,.75fr);gap:18px;align-items:stretch}.section-card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,#202a38,#171e29);overflow:hidden;box-shadow:0 18px 55px #0002}.section-head{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.section-head h2{font-size:16px;margin:0}.section-head span{font-size:11px;color:var(--muted)}.versions{padding:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.version{position:relative;text-align:left;min-height:132px;border:1px solid #ffffff17;border-radius:12px;background:linear-gradient(145deg,#303d4c,#222b37);padding:13px;color:white;cursor:pointer;overflow:hidden;transition:transform .15s,border-color .15s,background .15s}.version:hover{transform:translateY(-2px);border-color:#8e9fb5}.version.selected{border:2px solid var(--green);padding:12px;background:linear-gradient(145deg,#254634,#1d302a);box-shadow:0 0 0 2px #55d87915}.version:disabled{cursor:not-allowed;opacity:.56}.version .art{font-size:29px;display:block;margin-bottom:12px;filter:drop-shadow(0 5px 6px #0004)}.version strong{display:block;font-size:14px}.version small{display:block;color:#bac5d2;font-size:11px;margin-top:5px;line-height:1.4}.version .tag{position:absolute;right:8px;top:8px;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#cbd6e2;background:#101721a8;padding:4px 6px;border-radius:5px}.version.selected .tag{color:#a6f4b9;background:#153b25}.side{display:flex;flex-direction:column}.preview{padding:22px;display:flex;flex-direction:column;flex:1;min-height:350px;background:radial-gradient(ellipse at 50% 22%,#48634e 0,#263a37 25%,#1a2531 62%,#171e29 100%)}.scene{flex:1;min-height:150px;display:grid;place-items:center;position:relative;overflow:hidden}.scene:before{content:"";position:absolute;width:220px;height:130px;background:linear-gradient(135deg,#5fbd74,#286d47);clip-path:polygon(50% 0,100% 28%,50% 56%,0 28%);top:28px;filter:drop-shadow(0 15px 10px #0004)}.scene:after{content:"";position:absolute;width:220px;height:110px;top:64px;background:linear-gradient(90deg,#326e48 50%,#214e38 50%);clip-path:polygon(0 0,50% 27%,100% 0,100% 70%,50% 100%,0 70%);opacity:.95}.scene .big-cube{z-index:2;font-size:74px;text-shadow:0 14px 22px #0005;transform:translateY(8px)}.preview h2{font-size:24px;margin:16px 0 7px;letter-spacing:-.03em}.preview p{font-size:13px;line-height:1.6;color:#c1cdd6;margin:0 0 16px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}.meta span{font-size:11px;padding:6px 8px;border-radius:6px;background:#ffffff12;color:#e2e9ef}.launch{width:100%;padding:14px 16px;border:0;border-radius:10px;background:linear-gradient(#62e582,#42c864);color:#082313;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #248443,0 12px 25px #39ce6024;transition:transform .12s,filter .12s}.launch:hover{filter:brightness(1.06)}.launch:active{transform:translateY(3px);box-shadow:0 2px 0 #248443}.launch:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.launch-note{text-align:center;color:#b6c3cd;font-size:11px;line-height:1.5;margin-top:12px}.game-panel{margin-top:18px;display:none}.game-panel.visible{display:block}.game-toolbar{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#1b2430;border-bottom:1px solid var(--line)}.game-toolbar strong{font-size:13px}.tools{display:flex;gap:8px;flex-wrap:wrap}.tools button,.secondary{border:1px solid #455466;background:#2a3544;color:white;padding:9px 12px;border-radius:8px;cursor:pointer;font-size:12px}.tools button:hover,.secondary:hover{border-color:var(--green)}.game-wrap{position:relative;background:#05070b;min-height:250px}.gameframe{display:block;width:100%;height:min(76vh,850px);min-height:450px;border:0;background:#05070b}.loading{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:radial-gradient(ellipse at 50% 30%,#263d34,#080d14 70%);z-index:2}.loading.hidden{display:none}.loader-cube{font-size:45px;animation:bob 1.4s ease-in-out infinite}.loading h3{margin:12px 0 5px}.loading p{color:var(--muted);font-size:13px;line-height:1.6;max-width:420px}.statusline{margin:14px 0 0;border:1px solid #354253;border-radius:10px;background:#141c27;padding:12px 14px;font-size:12px;color:#b8c5d3;line-height:1.6}.statusline strong{color:white}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 28px}.feature{padding:16px;border:1px solid var(--line);border-radius:12px;background:#18212d}.feature .emoji{font-size:22px}.feature h3{font-size:13px;margin:10px 0 5px}.feature p{color:var(--muted);font-size:12px;line-height:1.6;margin:0}footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-size:11px;line-height:1.7}footer a{color:#b9d7c3;text-decoration:underline}.notice{font-size:11px;color:#8f9eaf;margin-top:9px;line-height:1.5}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@media(max-width:850px){.layout{grid-template-columns:1fr}.preview{min-height:380px}.scene{min-height:170px}.hero{align-items:flex-start;flex-direction:column}.tiny-pill{white-space:normal}.versions{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.shell{width:calc(100% - 20px)}header{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 0}.nav{width:100%;overflow:auto;flex-wrap:nowrap;padding-bottom:8px}.nav a{white-space:nowrap}.hero{padding-top:23px}.versions{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px;gap:8px}.version{min-height:120px;padding:11px}.version.selected{padding:10px}.version .art{font-size:25px}.gameframe{height:68vh;min-height:360px}.features{grid-template-columns:1fr}.preview{padding:18px}.section-head{padding:14px}.brand{font-size:13px}}
+:root{color-scheme:dark;--bg:#10151f;--panel:#1a222f;--panel2:#222d3c;--line:#354253;--text:#f3f6fa;--muted:#aab6c5;--green:#55d879;--blue:#7ec9ff;--purple:#a78bfa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -15%,#293b52 0,transparent 43%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button{font:inherit;cursor:pointer}.shell{width:min(1240px,calc(100% - 30px));margin:auto}
+header{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #ffffff14}.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.09em;color:white;text-decoration:none}.logo{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,#6fda91,#2f9d58);color:#092414;font-size:24px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.15em;margin-top:3px}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{padding:10px 12px;border-radius:9px;color:#c7d0dc;font-size:13px;text-decoration:none}.nav a:hover{background:#ffffff0e}
+.hero{padding:28px 0 20px}.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:850}.hero h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;margin:8px 0}.hero p{max-width:680px;color:var(--muted);line-height:1.6;margin:0;font-size:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(290px,.75fr);gap:18px}.card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,#202a38,#171e29);overflow:hidden;box-shadow:0 18px 55px #0002}.head{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}.head h2{font-size:16px;margin:0}.head span{font-size:11px;color:var(--muted)}
+.games{padding:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.game-card{min-height:160px;text-align:left;border:1px solid #ffffff20;border-radius:13px;background:linear-gradient(145deg,#303d4c,#222b37);padding:14px;color:white;transition:.15s}.game-card:hover{transform:translateY(-2px);border-color:#8e9fb5}.game-card.selected{border:2px solid var(--green);padding:13px;background:linear-gradient(145deg,#254634,#1d302a)}.game-card .art{display:block;font-size:36px;margin-bottom:12px}.game-card strong{display:block;font-size:15px}.game-card small{display:block;color:#bac5d2;font-size:11px;margin-top:6px;line-height:1.5}.tag{float:right;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#a6f4b9;background:#153b25;padding:5px 7px;border-radius:5px}
+.preview{padding:22px;display:flex;flex-direction:column;min-height:365px;background:radial-gradient(ellipse at 50% 22%,#365342,#1a2531 65%)}.scene{flex:1;min-height:130px;display:grid;place-items:center;font-size:85px}.preview h2{font-size:24px;margin:12px 0 7px}.preview p{font-size:13px;line-height:1.6;color:#c1cdd6;margin:0 0 15px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}.meta span{font-size:11px;padding:6px 8px;border-radius:6px;background:#ffffff12}.launch{width:100%;padding:14px;border:0;border-radius:10px;background:linear-gradient(#62e582,#42c864);color:#082313;font-weight:900;box-shadow:0 5px 0 #248443}.launch:disabled{opacity:.45;cursor:not-allowed}
+.play-area{display:none;margin-top:18px}.play-area.visible{display:block}.toolbar{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#1b2430;border-bottom:1px solid var(--line)}.toolbar strong{font-size:13px}.tools{display:flex;gap:8px;flex-wrap:wrap}.tools button,.secondary{border:1px solid #455466;background:#2a3544;color:white;padding:9px 12px;border-radius:8px;font-size:12px}.stage{position:relative;background:#080d14;min-height:300px}.stage iframe{display:block;width:100%;height:min(76vh,850px);min-height:450px;border:0;background:#05070b}.game-canvas{display:none;width:100%;height:min(70vh,650px);min-height:380px;touch-action:none;background:#101b2a}.stage.is-eagler #gameCanvas,.stage.is-eagler #threeCanvas{display:none}.stage.is-2d #gameCanvas{display:block}.stage.is-2d #threeCanvas{display:none}.stage.is-3d #gameCanvas{display:none}.stage.is-3d #threeCanvas{display:block}.help{padding:12px 15px;color:#bdc9d6;font-size:12px;line-height:1.6;background:#141c27}.status{margin:14px 0;border:1px solid var(--line);border-radius:10px;background:#141c27;padding:12px 14px;font-size:12px;color:#b8c5d3}
+footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-size:11px;line-height:1.7;margin-top:22px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.preview{min-height:310px}}@media(max-width:560px){.shell{width:calc(100% - 20px)}header{padding:12px 0;flex-wrap:wrap}.nav{width:100%;overflow:auto;flex-wrap:nowrap}.nav a{white-space:nowrap}.games{padding:10px;gap:8px}.game-card{min-height:145px;padding:11px}.game-card .art{font-size:30px}.stage iframe{height:68vh;min-height:360px}.game-canvas{height:68vh;min-height:360px}}
 </style>
 </head>
 <body>
 <div class="shell">
 <header>
-  <a class="brand" href="#top" aria-label="Blockverse home"><span class="logo">▦</span><span>BLOCKVERSE<small>FAN-MADE GAME LAUNCHER</small></span></a>
-  <nav class="nav" aria-label="Main navigation"><a class="active" href="#versions">Play</a><a href="#versions">Versions</a><a href="#game-area" id="gameNav">My Game</a><a href="#about">About</a></nav>
+<a class="brand" href="#top"><span class="logo">▦</span><span>BLOCKVERSE<small>FAN-MADE GAME HUB</small></span></a>
+<nav class="nav"><a href="#games">Games</a><a href="#play-area">Play area</a><a href="#about">About</a></nav>
 </header>
 <main id="top">
-<section class="hero"><div><div class="kicker">Your browser · Your adventure</div><h1>Choose your <span style="color:var(--green)">world.</span></h1><p>Pick a version and launch your game right here in Blockverse. Built for desktop, Chromebook, tablet, and mobile screens.</p></div><div class="tiny-pill">● Local game file · No account needed for this launcher</div></section>
-<section class="layout" id="versions">
-  <div class="section-card"><div class="section-head"><h2>Game versions</h2><span>SELECT A VERSION</span></div><div class="versions" id="versionGrid">
-    <button class="version selected" data-version="1.8.8" data-file="EaglercraftX_1.8_u53_Offline_Signed.html" data-available="true" aria-pressed="true"><span class="tag">Ready</span><span class="art">🧱</span><strong>Eaglercraft 1.8</strong><small>1.8.8 · Main game</small></button>
-    <button class="version" data-version="1.5.2" data-file="Eaglercraft_1.5.2.html" data-available="false" aria-pressed="false"><span class="tag">Add file</span><span class="art">🌲</span><strong>Eaglercraft 1.5.2</strong><small>Classic survival era</small></button>
-    <button class="version" data-version="Beta 1.7.3" data-file="Eaglercraft_Beta_1.7.3.html" data-available="false" aria-pressed="false"><span class="tag">Add file</span><span class="art">⛏️</span><strong>Beta 1.7.3</strong><small>Old-school building</small></button>
-    <button class="version" data-version="Beta 1.3" data-file="Eaglercraft_Beta_1.3.html" data-available="false" aria-pressed="false"><span class="tag">Add file</span><span class="art">🌄</span><strong>Beta 1.3</strong><small>Early beta adventure</small></button>
-    <button class="version" data-version="Alpha 1.2.6" data-file="Eaglercraft_Alpha_1.2.6.html" data-available="false" aria-pressed="false"><span class="tag">Add file</span><span class="art">🌙</span><strong>Alpha 1.2.6</strong><small>Very early classic</small></button>
-    <button class="version" data-version="More versions" data-file="" data-available="false" aria-pressed="false"><span class="tag">Coming later</span><span class="art">✨</span><strong>More versions</strong><small>Add more game files later</small></button>
-  </div></div>
-  <aside class="section-card side"><div class="section-head"><h2>Selected version</h2><span id="selectedBadge">READY TO PLAY</span></div><div class="preview"><div class="scene" aria-hidden="true"><div class="big-cube">🧊</div></div><h2 id="selectedTitle">Eaglercraft 1.8</h2><p id="selectedDesc">Load your existing Eaglercraft 1.8 game file directly inside the Blockverse page.</p><div class="meta"><span id="versionMeta">Version 1.8.8</span><span>Browser play</span><span>Desktop + mobile</span></div><button class="launch" id="playButton">▶ LAUNCH GAME</button><div class="launch-note" id="launchNote">Your existing game file will open below. Loading may take a moment.</div><div class="notice">Other versions are shown as setup slots. Their game files must be added to your repository before they can launch.</div></div></aside>
+<section class="hero"><div class="kicker">Your browser · Your adventure</div><h1>Choose your <span style="color:var(--green)">game.</span></h1><p>Three different adventures in one place. Choose a game and launch it right here in Blockverse.</p></section>
+<section class="layout" id="games">
+<div class="card"><div class="head"><h2>Game library</h2><span>SELECT A GAME</span></div>
+<div class="games">
+<button class="game-card selected" data-game="eagler"><span class="tag">Installed</span><span class="art">🧱</span><strong>Eaglercraft 1.8</strong><small>Minecraft-style block building · Your existing game file</small></button>
+<button class="game-card" data-game="obby"><span class="tag">Playable preview</span><span class="art">🧍</span><strong>Blockverse 2D</strong><small>Roblox-inspired 2D platform adventure</small></button>
+<button class="game-card" data-game="royale"><span class="tag">Playable preview</span><span class="art">🏝️</span><strong>Blockverse Royale</strong><small>Original 3D island survival prototype</small></button>
+</div></div>
+<aside class="card"><div class="head"><h2>Selected game</h2><span id="selectedState">READY</span></div><div class="preview"><div class="scene" id="previewArt">🧱</div><h2 id="previewTitle">Eaglercraft 1.8</h2><p id="previewDesc">Launch your existing Eaglercraft 1.8 game file inside Blockverse.</p><div class="meta"><span id="genre">Sandbox</span><span>Browser game</span><span>Desktop + mobile</span></div><button class="launch" id="launch">▶ LAUNCH GAME</button></div></aside>
 </section>
-<section class="section-card game-panel" id="game-area" aria-label="Game player"><div class="game-toolbar"><strong>🎮 <span id="gameHeading">Eaglercraft 1.8</span></strong><div class="tools"><button id="reloadButton">↻ Reload game</button><button id="fullscreenButton">⛶ Fullscreen</button><button id="hideButton">Hide game</button></div></div><div class="game-wrap" id="gameWrap"><div class="loading" id="loading"><div><div class="loader-cube">🧊</div><h3>Ready to enter?</h3><p>Press <strong>Launch Game</strong> above to load your game. The first load can take a little while.</p></div></div><iframe class="gameframe" id="gameFrame" title="Blockverse game window" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" allowfullscreen></iframe></div></section>
-<div class="statusline" id="status" role="status"><strong>Ready:</strong> Eaglercraft 1.8 is selected. Press Launch Game when you're ready.</div>
-<section class="features" id="about"><article class="feature"><div class="emoji">💻</div><h3>Made for your device</h3><p>The layout adapts to Chromebook, computer, tablet, and phone screens. Game controls depend on the selected game.</p></article><article class="feature"><div class="emoji">🚀</div><h3>Quick launch</h3><p>Launch your uploaded HTML game inside this page, reload it if it gets stuck, or switch to fullscreen.</p></article><article class="feature"><div class="emoji">🧩</div><h3>Add more versions</h3><p>When you upload another compatible game HTML file, update that version tile's filename and mark it available.</p></article></section>
+<section class="card play-area" id="play-area"><div class="toolbar"><strong>🎮 <span id="gameHeading">Eaglercraft 1.8</span></strong><div class="tools"><button id="restart">↻ Restart</button><button id="full">⛶ Fullscreen</button><button id="hide">Hide game</button></div></div>
+<div class="stage" id="stage"><iframe id="eaglerFrame" title="Eaglercraft game" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" allowfullscreen></iframe><canvas class="game-canvas" id="gameCanvas"></canvas><canvas class="game-canvas" id="threeCanvas"></canvas></div>
+<div class="help" id="gameHelp">Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.</div>
+</section>
+<div class="status" id="status">Ready. Choose a game and press Launch Game.</div>
+<section id="about" class="help" style="border:1px solid var(--line);border-radius:12px;margin-bottom:22px"><strong>About Blockverse:</strong> An independent fan-made game hub. Blockverse 2D and Blockverse Royale are original prototypes inspired by popular game genres, not official Roblox or Fortnite games. Eaglercraft is a separate community project.</section>
 </main>
-<footer>Blockverse is an independent fan-made launcher and is not affiliated with Mojang or Microsoft. Eaglercraft is a community project. Use game files only where permitted and follow the relevant project licenses. <br><a href="https://eaglercraft.com/" target="_blank" rel="noopener noreferrer">Eaglercraft project website ↗</a></footer>
+<footer>Blockverse is independent and is not affiliated with Mojang, Microsoft, Roblox Corporation, or Epic Games. Use game files only where permitted.</footer>
 </div>
 <script>
 (() => {
-  const cards = [...document.querySelectorAll('.version')];
-  const playButton = document.getElementById('playButton');
-  const selectedTitle = document.getElementById('selectedTitle');
-  const selectedDesc = document.getElementById('selectedDesc');
-  const selectedBadge = document.getElementById('selectedBadge');
-  const versionMeta = document.getElementById('versionMeta');
-  const launchNote = document.getElementById('launchNote');
-  const status = document.getElementById('status');
-  const frame = document.getElementById('gameFrame');
-  const loading = document.getElementById('loading');
-  const gamePanel = document.getElementById('game-area');
-  const gameHeading = document.getElementById('gameHeading');
-  let selected = cards[0];
-  let launched = false;
+const games={
+eagler:{title:"Eaglercraft 1.8",art:"🧱",desc:"Launch your existing Eaglercraft 1.8 game file inside Blockverse.",genre:"Sandbox",help:"Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.",file:"EaglercraftX_1.8_u53_Offline_Signed.html"},
+obby:{title:"Blockverse 2D",art:"🧍",desc:"Run, jump, collect stars, and reach the portal in this original 2D platform adventure.",genre:"2D Platformer",help:"Controls: A/D or ←/→ to move, Space/W/↑ to jump. On touchscreens, use the on-screen buttons.",file:null},
+royale:{title:"Blockverse Royale",art:"🏝️",desc:"Explore a colorful 3D island, collect energy crystals, and avoid the closing storm zone.",genre:"3D Survival",help:"Controls: WASD to move, mouse to look, click to lock pointer. Collect glowing crystals. On touchscreens, drag the screen to look and use the movement pad.",file:null}
+};
+let selected="eagler",running=false,animation=0,three=null;
+const $=id=>document.getElementById(id), frame=$("eaglerFrame"),canvas=$("gameCanvas"),threeCanvas=$("threeCanvas"),ctx=canvas.getContext("2d");
+const cards=[...document.querySelectorAll(".game-card")];
+function select(id){selected=id;cards.forEach(c=>c.classList.toggle("selected",c.dataset.game===id));const g=games[id];$("previewArt").textContent=g.art;$("previewTitle").textContent=g.title;$("previewDesc").textContent=g.desc;$("genre").textContent=g.genre;$("gameHeading").textContent=g.title;$("selectedState").textContent=id==="eagler"?"INSTALLED":"PLAYABLE PREVIEW";$("gameHelp").textContent=g.help;$("launch").textContent="▶ PLAY "+g.title.toUpperCase();$("status").textContent=g.title+" selected. Press Play when ready."}
+cards.forEach(c=>c.addEventListener("click",()=>select(c.dataset.game)));
+function showStage(){ $("play-area").classList.add("visible");$("play-area").scrollIntoView({behavior:"smooth",block:"start"});}
+function stopGames(){running=false;cancelAnimationFrame(animation);if(three){three.stop();three=null;} }
+function launch(){stopGames();showStage();$("stage").classList.remove("is-eagler","is-2d","is-3d");$("stage").classList.add(selected==="eagler"?"is-eagler":selected==="obby"?"is-2d":"is-3d");
+if(selected==="eagler"){frame.src=games.eagler.file;$("status").textContent="Opening your Eaglercraft game…";return;}
+frame.src="about:blank";running=true;
+if(selected==="obby") start2D(); else start3D();
+$("status").textContent=games[selected].title+" is running. Have fun!";}
+$("launch").addEventListener("click",launch);
+$("hide").addEventListener("click",()=>{$("play-area").classList.remove("visible");stopGames();});
+$("restart").addEventListener("click",()=>{if(selected==="eagler"){frame.src=games.eagler.file;}else launch();});
+$("full").addEventListener("click",()=>{const target=selected==="eagler"?frame:(selected==="royale"?threeCanvas:canvas);if(target.requestFullscreen)target.requestFullscreen();});
+function sizeCanvas(){const dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.max(1,Math.floor(r.width*dpr));canvas.height=Math.max(1,Math.floor(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);return {w:r.width,h:r.height};}
+let keys={},player,platforms,stars,camX=0;
+addEventListener("keydown",e=>{keys[e.key.toLowerCase()]=true;if([" ","arrowup","arrowleft","arrowright"].includes(e.key.toLowerCase()))e.preventDefault();});
+addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
+function start2D(){canvas.style.cursor="default";let {w,h}=sizeCanvas();player={x:60,y:h-110,vx:0,vy:0,w:28,h:42,on:false};camX=0;
+platforms=[{x:0,y:h-35,w:900,h:50},{x:180,y:h-115,w:120,h:18},{x:370,y:h-175,w:130,h:18},{x:570,y:h-120,w:130,h:18},{x:780,y:h-205,w:150,h:18},{x:1010,y:h-100,w:180,h:18}];
+stars=[{x:225,y:h-150},{x:420,y:h-210},{x:625,y:h-155},{x:850,y:h-240},{x:1080,y:h-135}];let collected=0;
+function draw(){if(!running||selected!=="obby")return;let z=sizeCanvas();h=z.h;w=z.w;
+if(keys.a||keys.arrowleft)player.vx=-3.4;else if(keys.d||keys.arrowright)player.vx=3.4;else player.vx*=.78;
+if((keys[" "]||keys.w||keys.arrowup||keys.jump)&&player.on){player.vy=-10.5;player.on=false;}
+player.vy+=.48;player.x+=player.vx;player.y+=player.vy;player.on=false;
+for(const p of platforms){if(player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>=p.y&&player.y+player.h<=p.y+20&&player.vy>=0){player.y=p.y-player.h;player.vy=0;player.on=true;}}
+if(player.y>h+100){player.x=60;player.y=h-110;player.vy=0;}
+camX=Math.max(0,Math.min(player.x-w*.35,650));
+let sky=ctx.createLinearGradient(0,0,0,h);sky.addColorStop(0,"#79c9ff");sky.addColorStop(1,"#d8f5ff");ctx.fillStyle=sky;ctx.fillRect(0,0,w,h);
+ctx.fillStyle="#7ccf8a";for(let i=0;i<7;i++){ctx.beginPath();ctx.arc(i*190-camX*.25,h-20,70,Math.PI,0);ctx.fill();}
+for(const p of platforms){ctx.fillStyle="#80552f";ctx.fillRect(p.x-camX,p.y,p.w,p.h);ctx.fillStyle="#4bd16b";ctx.fillRect(p.x-camX,p.y,p.w,7);}
+for(const s of stars){if(!s.got){ctx.fillStyle="#ffd84d";ctx.beginPath();ctx.arc(s.x-camX,s.y,9,0,Math.PI*2);ctx.fill();ctx.fillStyle="#fff3a5";ctx.fillRect(s.x-camX-2,s.y-6,4,12);if(Math.abs(player.x-s.x)<20&&Math.abs(player.y-s.y)<35){s.got=true;collected++;}}}
+ctx.fillStyle="#5b45d6";ctx.fillRect(player.x-camX,player.y,player.w,player.h);ctx.fillStyle="#f4c7a1";ctx.fillRect(player.x-camX+5,player.y+4,18,16);ctx.fillStyle="#172033";ctx.fillRect(player.x-camX+8,player.y+10,3,3);ctx.fillRect(player.x-camX+18,player.y+10,3,3);
+ctx.fillStyle="#172033";ctx.font="bold 15px system-ui";ctx.fillText("BLOCKVERSE 2D   ★ "+collected+"/"+stars.length,16,26);
+ctx.fillStyle="#fff";ctx.font="13px system-ui";ctx.fillText("Reach the glowing portal →",w-175,26);
+ctx.fillStyle="#8d6aff";ctx.fillRect(1130-camX,h-150,22,115);ctx.fillStyle="#d6c5ff";ctx.fillRect(1134-camX,h-142,14,100);
+animation=requestAnimationFrame(draw);}
+draw();}
+function addTouchControls(){let old=document.getElementById("touchControls");if(old)old.remove();let wrap=document.createElement("div");wrap.id="touchControls";wrap.style.cssText="position:absolute;bottom:14px;left:14px;display:flex;gap:9px;z-index:5";for(const [label,key] of [["◀","arrowleft"],["▲","jump"],["▶","arrowright"]]){let b=document.createElement("button");b.textContent=label;b.style.cssText="width:52px;height:52px;border:1px solid #ffffff66;border-radius:14px;background:#142033cc;color:white;font-size:22px;touch-action:none";b.onpointerdown=e=>{e.preventDefault();keys[key]=true};b.onpointerup=b.onpointerleave=()=>keys[key]=false;wrap.appendChild(b);} $("stage").appendChild(wrap);}
+const originalLaunch=launch;$("launch").addEventListener("click",()=>{if(selected==="obby")addTouchControls();else{let t=document.getElementById("touchControls");if(t)t.remove();}});
+/* Three.js is loaded from a public CDN only for the optional 3D prototype. */
+function start3D(){
+let t=document.getElementById("threeScript");
+if(!window.THREE){if(!t){t=document.createElement("script");t.id="threeScript";t.src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js";t.onload=build3D;t.onerror=()=>{$("status").textContent="The 3D engine could not load. Check your internet connection and reload.";};document.head.appendChild(t);}else t.onload=build3D;}else build3D();
+}
+function build3D(){if(!running||selected!=="royale")return;const THREE=window.THREE;if(!THREE)return;
+let renderer=new THREE.WebGLRenderer({canvas:threeCanvas,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(threeCanvas.clientWidth,threeCanvas.clientHeight,false);renderer.shadowMap.enabled=true;
+let scene=new THREE.Scene();scene.background=new THREE.Color(0x91d9ff);scene.fog=new THREE.Fog(0x91d9ff,28,90);
+let camera=new THREE.PerspectiveCamera(70,threeCanvas.clientWidth/threeCanvas.clientHeight,.1,200);
+scene.add(new THREE.HemisphereLight(0xcceeff,0x49603a,2));let sun=new THREE.DirectionalLight(0xffffff,2);sun.position.set(-10,20,8);sun.castShadow=true;scene.add(sun);
+let ground=new THREE.Mesh(new THREE.PlaneGeometry(130,130),new THREE.MeshStandardMaterial({color:0x55a85b,roughness:1}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+for(let i=0;i<24;i++){let x=(Math.random()-.5)*90,z=(Math.random()-.5)*90;if(Math.hypot(x,z)<10)continue;let trunk=new THREE.Mesh(new THREE.CylinderGeometry(.25,.35,2,7),new THREE.MeshStandardMaterial({color:0x80512e}));trunk.position.set(x,1,z);trunk.castShadow=true;scene.add(trunk);let crown=new THREE.Mesh(new THREE.ConeGeometry(1.6,3.5,7),new THREE.MeshStandardMaterial({color:0x23834b}));crown.position.set(x,3.5,z);crown.castShadow=true;scene.add(crown);}
+let avatar=new THREE.Group();let body=new THREE.Mesh(new THREE.BoxGeometry(.8,1.2,.5),new THREE.MeshStandardMaterial({color:0x6e56d9}));body.position.y=1.2;avatar.add(body);let head=new THREE.Mesh(new THREE.BoxGeometry(.65,.65,.65),new THREE.MeshStandardMaterial({color:0xf2c49b}));head.position.y=2.15;avatar.add(head);avatar.position.set(0,0,0);scene.add(avatar);
+let crystals=[];for(let i=0;i<10;i++){let m=new THREE.Mesh(new THREE.OctahedronGeometry(.55),new THREE.MeshStandardMaterial({color:0x49e5ff,emissive:0x087eaa,emissiveIntensity:.8}));m.position.set((Math.random()-.5)*65,.9,(Math.random()-.5)*65);scene.add(m);crystals.push(m);}
+let ring=new THREE.Mesh(new THREE.TorusGeometry(24,.18,8,100),new THREE.MeshBasicMaterial({color:0x8a6cff}));ring.rotation.x=Math.PI/2;ring.position.y=.15;scene.add(ring);
+let yaw=0,pitch=-.18,move={x:0,z:0},collected=0,locked=false;
+const onMouse=e=>{if(document.pointerLockElement===canvas){yaw-=e.movementX*.0025;pitch=Math.max(-.8,Math.min(.45,pitch-e.movementY*.002));}};
+const onClick=()=>{if(threeCanvas.requestPointerLock)threeCanvas.requestPointerLock();};const onKey=e=>{keys[e.key.toLowerCase()]=true;};const onUp=e=>keys[e.key.toLowerCase()]=false;
+threeCanvas.addEventListener("click",onClick);document.addEventListener("mousemove",onMouse);addEventListener("keydown",onKey);addEventListener("keyup",onUp);
+let clock=new THREE.Clock();
+function render(){if(!running||selected!=="royale"){renderer.dispose();threeCanvas.removeEventListener("click",onClick);document.removeEventListener("mousemove",onMouse);return;}
+let dt=Math.min(clock.getDelta(),.05);let forward=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0),side=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0);
+avatar.position.x+=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)*dt*9;avatar.position.z+=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)*dt*9;avatar.position.x=Math.max(-60,Math.min(60,avatar.position.x));avatar.position.z=Math.max(-60,Math.min(60,avatar.position.z));avatar.rotation.y=yaw;
+let desired=new THREE.Vector3(avatar.position.x+Math.sin(yaw)*8,avatar.position.y+4+pitch*3,avatar.position.z+Math.cos(yaw)*8);camera.position.lerp(desired,.12);camera.lookAt(avatar.position.x,1.4,avatar.position.z);
+for(let i=crystals.length-1;i>=0;i--){let c=crystals[i];c.rotation.y+=dt*1.8;c.rotation.x+=dt;if(c.position.distanceTo(new THREE.Vector3(avatar.position.x,1,avatar.position.z))<1.5){scene.remove(c);crystals.splice(i,1);collected++;}}
+ring.scale.setScalar(Math.max(.35,1-clock.elapsedTime*.006));renderer.render(scene,camera);
 
-  function choose(card) {
-    selected = card;
-    cards.forEach(c => { const active = c === card; c.classList.toggle('selected', active); c.setAttribute('aria-pressed', String(active)); });
-    const ready = card.dataset.available === 'true';
-    selectedTitle.textContent = card.querySelector('strong').textContent;
-    selectedDesc.textContent = ready ? 'Load your existing Eaglercraft 1.8 game file directly inside the Blockverse page.' : 'This version tile is ready for a future game file. It will become playable after you add the matching HTML file to your repository.';
-    selectedBadge.textContent = ready ? 'READY TO PLAY' : 'FILE NOT ADDED';
-    versionMeta.textContent = ready ? 'Version ' + card.dataset.version : 'Version not installed';
-    playButton.disabled = !ready;
-    playButton.textContent = ready ? '▶ LAUNCH GAME' : '🔒 GAME FILE NEEDED';
-    launchNote.textContent = ready ? 'Your existing game file will open below. Loading may take a moment.' : 'To enable this tile, upload its compatible HTML game file and update its filename in index.html.';
-    status.innerHTML = ready ? '<strong>Ready:</strong> Eaglercraft 1.8 is selected. Press Launch Game when you’re ready.' : '<strong>Not installed:</strong> ' + card.querySelector('strong').textContent + ' needs its own game file. Your existing game has not been changed.';
-  }
-  cards.forEach(card => card.addEventListener('click', () => choose(card)));
-
-  function launchGame() {
-    if (selected.dataset.available !== 'true') return;
-    const file = selected.dataset.file;
-    if (!file) return;
-    gamePanel.classList.add('visible');
-    loading.classList.remove('hidden');
-    loading.querySelector('h3').textContent = 'Loading Eaglercraft 1.8…';
-    loading.querySelector('p').textContent = 'If this screen stays visible, check that the game HTML file is in the same repository folder as index.html and that its name matches exactly.';
-    gameHeading.textContent = selected.querySelector('strong').textContent;
-    status.innerHTML = '<strong>Loading:</strong> Opening your local game file inside Blockverse…';
-    const wanted = new URL(file, window.location.href).href;
-    if (!launched || frame.src !== wanted) {
-      frame.onload = () => {
-        loading.classList.add('hidden');
-        status.innerHTML = '<strong>Game opened:</strong> If you still see a blank frame, check the filename and GitHub Pages deployment.';
-      };
-      frame.src = wanted;
-      launched = true;
-    } else {
-      loading.classList.add('hidden');
-    }
-    gamePanel.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-  playButton.addEventListener('click', launchGame);
-  document.getElementById('reloadButton').addEventListener('click', () => {
-    if (!frame.src) { status.innerHTML = '<strong>Not launched yet:</strong> Press Launch Game first.'; return; }
-    loading.classList.remove('hidden');
-    loading.querySelector('h3').textContent = 'Reloading game…';
-    try { frame.contentWindow.location.reload(); } catch (_) { frame.src = selected.dataset.file; }
-    status.innerHTML = '<strong>Reloading:</strong> The game frame is being refreshed.';
-  });
-  document.getElementById('fullscreenButton').addEventListener('click', async () => {
-    if (!frame.src) { status.innerHTML = '<strong>Not launched yet:</strong> Press Launch Game first.'; return; }
-    try { await frame.requestFullscreen(); } catch (_) { status.innerHTML = '<strong>Fullscreen unavailable:</strong> Try using your browser’s fullscreen control or launch the game first.'; }
-  });
-  document.getElementById('hideButton').addEventListener('click', () => {
-    gamePanel.classList.remove('visible');
-    document.getElementById('versions').scrollIntoView({behavior:'smooth',block:'start'});
-    status.innerHTML = '<strong>Game hidden:</strong> Your game has not been deleted. Press Launch Game to return.';
-  });
-  document.getElementById('gameNav').addEventListener('click', () => {
-    if (!gamePanel.classList.contains('visible')) status.innerHTML = '<strong>Game area:</strong> Launch a game first to show the player window.';
-  });
-  choose(cards[0]);
+animation=requestAnimationFrame(render);}
+const resize=()=>{let w=threeCanvas.clientWidth,h=threeCanvas.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);};window.addEventListener("resize",resize);render();
+three={stop:()=>{cancelAnimationFrame(animation);window.removeEventListener("resize",resize);renderer.dispose();}};
+}
+select("eagler");
 })();
 </script>
 </body>
