@@ -25,22 +25,22 @@ footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-siz
 <nav class="nav"><a href="#games">Games</a><a href="#play-area">Play area</a><a href="#about">About</a></nav>
 </header>
 <main id="top">
-<section class="hero"><div class="kicker">Your browser · Your adventure</div><h1>Choose your <span style="color:var(--green)">game.</span></h1><p>Three different adventures in one place. Choose a game and launch it right here in Blockverse.</p></section>
+<section class="hero"><div class="kicker">Your browser · Your adventure</div><h1>Choose your <span style="color:var(--green)">game.</span></h1><p>Choose a game and launch it in Blockverse. Some external games may need to open in a new tab.</p></section>
 <section class="layout" id="games">
 <div class="card"><div class="head"><h2>Game library</h2><span>SELECT A GAME</span></div>
 <div class="games">
 <button class="game-card selected" data-game="eagler"><span class="tag">Installed</span><span class="art">🧱</span><strong>Eaglercraft 1.8</strong><small>Minecraft-style block building · Your existing game file</small></button>
-<button class="game-card" data-game="obby"><span class="tag">Playable preview</span><span class="art">🧍</span><strong>Blockverse 2D</strong><small>Roblox-inspired 2D platform adventure</small></button>
-<button class="game-card" data-game="royale"><span class="tag">Playable preview</span><span class="art">🏝️</span><strong>Blockverse Royale</strong><small>Original 3D island survival prototype</small></button>
+<button class="game-card" data-game="roblox"><span class="tag">now.gg</span><span class="art">🎮</span><strong>Roblox</strong><small>Open Roblox through the now.gg game page</small></button>
+<button class="game-card" data-game="battle"><span class="tag">3D Battle Royale</span><span class="art">🪂</span><strong>Lobbystrike Battle Royale</strong><small>Play a real browser battle royale with an island, loot, weapons, and a shrinking zone</small></button>
 </div></div>
 <aside class="card"><div class="head"><h2>Selected game</h2><span id="selectedState">READY</span></div><div class="preview"><div class="scene" id="previewArt">🧱</div><h2 id="previewTitle">Eaglercraft 1.8</h2><p id="previewDesc">Launch your existing Eaglercraft 1.8 game file inside Blockverse.</p><div class="meta"><span id="genre">Sandbox</span><span>Browser game</span><span>Desktop + mobile</span></div><button class="launch" id="launch">▶ LAUNCH GAME</button></div></aside>
 </section>
-<section class="card play-area" id="play-area"><div class="toolbar"><strong>🎮 <span id="gameHeading">Eaglercraft 1.8</span></strong><div class="tools"><button id="restart">↻ Restart</button><button id="full">⛶ Fullscreen</button><button id="hide">Hide game</button></div></div>
+<section class="card play-area" id="play-area"><div class="toolbar"><strong>🎮 <span id="gameHeading">Eaglercraft 1.8</span></strong><div class="tools"><button id="openExternal" hidden>↗ Open game in new tab</button><button id="restart">↻ Restart</button><button id="full">⛶ Fullscreen</button><button id="hide">Hide game</button></div></div>
 <div class="stage" id="stage"><iframe id="eaglerFrame" title="Eaglercraft game" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" allowfullscreen></iframe><canvas class="game-canvas" id="gameCanvas"></canvas><canvas class="game-canvas" id="threeCanvas"></canvas></div>
 <div class="help" id="gameHelp">Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.</div>
 </section>
 <div class="status" id="status">Ready. Choose a game and press Launch Game.</div>
-<section id="about" class="help" style="border:1px solid var(--line);border-radius:12px;margin-bottom:22px"><strong>About Blockverse:</strong> An independent fan-made game hub. Blockverse 2D and Blockverse Royale are original prototypes inspired by popular game genres, not official Roblox or Fortnite games. Eaglercraft is a separate community project.</section>
+<section id="about" class="help" style="border:1px solid var(--line);border-radius:12px;margin-bottom:22px"><strong>About Blockverse:</strong> An independent game hub linking to Eaglercraft, Roblox through now.gg, and Lobbystrike Battle Royale. These games are operated by their respective creators; Blockverse is not affiliated with them.</section>
 </main>
 <footer>Blockverse is independent and is not affiliated with Mojang, Microsoft, Roblox Corporation, or Epic Games. Use game files only where permitted.</footer>
 </div>
@@ -48,8 +48,8 @@ footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-siz
 (() => {
 const games={
 eagler:{title:"Eaglercraft 1.8",art:"🧱",desc:"Launch your existing Eaglercraft 1.8 game file inside Blockverse.",genre:"Sandbox",help:"Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.",file:"EaglercraftX_1.8_u53_Offline_Signed.html"},
-obby:{title:"Blockverse 2D",art:"🧍",desc:"Run, jump, collect stars, and reach the portal in this original 2D platform adventure.",genre:"2D Platformer",help:"Controls: A/D or ←/→ to move, Space/W/↑ to jump. On touchscreens, use the on-screen buttons.",file:null},
-royale:{title:"Blockverse Royale",art:"🏝️",desc:"Explore a colorful 3D island, collect energy crystals, and avoid the closing storm zone.",genre:"3D Survival",help:"Controls: WASD to move, mouse to look, click to lock pointer. Collect glowing crystals. On touchscreens, drag the screen to look and use the movement pad.",file:null}
+roblox:{title:"Roblox on now.gg",art:"🎮",desc:"Browse Roblox experiences through now.gg. Choose Play in browser on the now.gg page.",genre:"Roblox · Cloud gaming",help:"This opens the now.gg Roblox games page. If the page does not load inside Blockverse, use Open game in new tab. now.gg controls Roblox availability.",url:"https://now.gg/games/roblox-mini-games.html"},
+battle:{title:"Lobbystrike Battle Royale",art:"🪂",desc:"A real 3D browser shooter with Battle Royale solo, duo, and squad modes, an island, weapons, loot, and a shrinking zone.",genre:"3D Battle Royale",help:"Lobbystrike runs best on a computer with keyboard and mouse. Controls: WASD to move, mouse to aim, left-click to fire, Space to jump. Use Open game in new tab if it will not embed.",url:"https://play.lobbystrike.com/"}
 };
 let selected="eagler",running=false,animation=0,three=null;
 const $=id=>document.getElementById(id), frame=$("eaglerFrame"),canvas=$("gameCanvas"),threeCanvas=$("threeCanvas"),ctx=canvas.getContext("2d");
@@ -58,15 +58,15 @@ function select(id){selected=id;cards.forEach(c=>c.classList.toggle("selected",c
 cards.forEach(c=>c.addEventListener("click",()=>select(c.dataset.game)));
 function showStage(){ $("play-area").classList.add("visible");$("play-area").scrollIntoView({behavior:"smooth",block:"start"});}
 function stopGames(){running=false;cancelAnimationFrame(animation);if(three){three.stop();three=null;} }
-function launch(){stopGames();showStage();$("stage").classList.remove("is-eagler","is-2d","is-3d");$("stage").classList.add(selected==="eagler"?"is-eagler":selected==="obby"?"is-2d":"is-3d");
+function launch(){stopGames();showStage();$("stage").classList.remove("is-eagler","is-2d","is-3d");$("stage").classList.add("is-eagler");$("openExternal").hidden=selected==="eagler";
 if(selected==="eagler"){frame.src=games.eagler.file;$("status").textContent="Opening your Eaglercraft game…";return;}
-frame.src="about:blank";running=true;
-if(selected==="obby") start2D(); else start3D();
-$("status").textContent=games[selected].title+" is running. Have fun!";}
+frame.src=games[selected].url;$("status").textContent="Loading "+games[selected].title+"… If the game is blocked inside this frame, choose Open game in new tab.";
+}
 $("launch").addEventListener("click",launch);
+$("openExternal").addEventListener("click",()=>{if(games[selected].url)window.open(games[selected].url,"_blank","noopener,noreferrer");});
 $("hide").addEventListener("click",()=>{$("play-area").classList.remove("visible");stopGames();});
 $("restart").addEventListener("click",()=>{if(selected==="eagler"){frame.src=games.eagler.file;}else launch();});
-$("full").addEventListener("click",()=>{const target=selected==="eagler"?frame:(selected==="royale"?threeCanvas:canvas);if(target.requestFullscreen)target.requestFullscreen();});
+$("full").addEventListener("click",()=>{const target=frame;if(target.requestFullscreen)target.requestFullscreen();});
 function sizeCanvas(){const dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.max(1,Math.floor(r.width*dpr));canvas.height=Math.max(1,Math.floor(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);return {w:r.width,h:r.height};}
 let keys={},player,platforms,stars,camX=0;
 addEventListener("keydown",e=>{keys[e.key.toLowerCase()]=true;if([" ","arrowup","arrowleft","arrowright"].includes(e.key.toLowerCase()))e.preventDefault();});
