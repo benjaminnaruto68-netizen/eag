@@ -37,6 +37,10 @@ footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-siz
 
 
 <button class="game-card" data-game="battle"><span class="tag">3D Battle Royale</span><span class="art">🪂</span><strong>Fortzone Battle Royale</strong><small>Play the 3D Fortnite-inspired browser battle royale</small></button>
+<button class="game-card" data-game="sonic"><span class="tag">3D Sonic</span><span class="art">🌀</span><strong>Sonic Robo Blast 2</strong><small>Fast 3D Sonic-style adventure with exploration and speed</small></button>
+<button class="game-card" data-game="basket"><span class="tag">Basketball</span><span class="art">🏀</span><strong>Basketball Stars 2026</strong><small>Arcade basketball with tournaments and super shots</small></button>
+<button class="game-card" data-game="soccer"><span class="tag">Soccer</span><span class="art">⚽</span><strong>Soccer Bros</strong><small>Fast 1v1 soccer matches and local two-player play</small></button>
+<button class="game-card" data-game="traffic"><span class="tag">3D Racing</span><span class="art">🏎️</span><strong>Traffic Jam 3D</strong><small>Drive fast through busy traffic and dodge cars</small></button>
 </div></div>
 <aside class="card"><div class="head"><h2>Selected game</h2><span id="selectedState">READY</span></div><div class="preview"><div class="scene" id="previewArt">🧱</div><h2 id="previewTitle">Eaglercraft 1.8</h2><p id="previewDesc">Launch your existing Eaglercraft 1.8 game file inside Blockverse.</p><div class="meta"><span id="genre">Sandbox</span><span>Browser game</span><span>Desktop + mobile</span></div></div></aside>
 </section>
@@ -45,7 +49,7 @@ footer{border-top:1px solid #ffffff17;padding:18px 0 28px;color:#91a0b1;font-siz
 <div class="help" id="gameHelp">Your Eaglercraft HTML file must stay in the same GitHub Pages folder as this index.html.</div>
 </section>
 <div class="status" id="status">Ready. Click a game card to start.</div>
-<section id="about" class="help" style="border:1px solid var(--line);border-radius:12px;margin-bottom:22px"><strong>About Blockverse:</strong> An independent game hub linking to Eaglercraft, SUNBREAK, Snow Rider 3D, Drive Mad, Space Waves, Escape Road, Slope, and Fortzone Battle Royale. These games are operated by their respective creators; Blockverse is not affiliated with them.</section>
+<section id="about" class="help" style="border:1px solid var(--line);border-radius:12px;margin-bottom:22px"><strong>About Blockverse:</strong> An independent game hub featuring Eaglercraft, SUNBREAK, Snow Rider 3D, Fortzone Battle Royale, Sonic Robo Blast 2, Basketball Stars 2026, Soccer Bros, and Traffic Jam 3D. These games are operated by their respective creators; Blockverse is not affiliated with them.</section>
 </main>
 <footer>Blockverse is independent and is not affiliated with Mojang, Microsoft, Roblox Corporation, or Epic Games. Use game files only where permitted.</footer>
 </div>
@@ -59,6 +63,10 @@ snow:{title:"Snow Rider 3D",art:"🛷",desc:"Race a sled down a snowy mountain, 
 
 
 
+sonic:{title:"Sonic Robo Blast 2",art:"🌀",desc:"A fast 3D Sonic fan game with exploration, speed, and community-made content. This is an adventure/platform game, not an official Sonic racing title.",genre:"3D Sonic Adventure",help:"Controls: WASD to move, arrow keys to turn, Z to jump, X to spin, C for ring toss, and R to reset. This is a fan-made Sonic game, not an official SEGA release.",url:"https://www.gameflare.com/embed/sonic-robo-blast-2/",externalUrl:"https://www.gameflare.com/online-game/sonic-robo-blast-2/"},
+basket:{title:"Basketball Stars 2026",art:"🏀",desc:"Compete in fast arcade basketball matches, tournaments, dunks, and powerful super shots.",genre:"Basketball",help:"Controls: Arrow keys to move, Z for super shot, X for action. Gameflare requires its embed player to be used without iframe sandboxing.",url:"https://www.gameflare.com/embed/basketball-stars-2026/",externalUrl:"https://www.gameflare.com/online-game/basketball-stars-2026/"},
+soccer:{title:"Soccer Bros",art:"⚽",desc:"Play quick 1v1 soccer matches with energetic arcade action. Supports two players on one keyboard.",genre:"Soccer",help:"Player 1: arrow keys to move and L to slide/kick. Player 2: WASD to move and G to slide/kick. Gameflare requires its embed player to be used without iframe sandboxing.",url:"https://www.gameflare.com/embed/soccer-bros/",externalUrl:"https://www.gameflare.com/online-game/soccer-bros/"},
+traffic:{title:"Traffic Jam 3D",art:"🏎️",desc:"Race through heavy traffic, avoid cars, and test your driving skills in a 3D highway game.",genre:"3D Racing",help:"Controls: use the arrow keys to steer and drive. Gameflare requires its embed player to be used without iframe sandboxing.",url:"https://www.gameflare.com/embed/traffic-jam-3d/",externalUrl:"https://www.gameflare.com/online-game/traffic-jam-3d/"}
 battle:{title:"Fortzone Battle Royale",art:"🪂",desc:"Drop into a 3D island battle, collect weapons and resources, build or break cover, and try to be the last player standing.",genre:"3D Battle Royale",help:"Fortzone loads directly into the CrazyGames game player. Controls: WASD to move, Space to jump, C to crouch, mouse to aim and shoot, R to reload, M for map. If it does not load inside Blockverse, choose Open game in new tab.",url:"https://games.crazygames.com/en_US/fortzone-battle-royale-xkd/index.html?v=2.14",externalUrl:"https://www.crazygames.com/game/fortzone-battle-royale-xkd"}
 };
 let selected="eagler",running=false,animation=0,three=null;
@@ -70,7 +78,7 @@ function showStage(){ $("play-area").classList.add("visible");$("play-area").scr
 function stopGames(){running=false;cancelAnimationFrame(animation);if(three){three.stop();three=null;} }
 function launch(){stopGames();showStage();$("stage").classList.remove("is-eagler","is-2d","is-3d");$("stage").classList.add("is-eagler");$("openExternal").hidden=selected==="eagler";
 if(selected==="eagler"){frame.src=games.eagler.file;$("status").textContent="Opening your Eaglercraft game…";return;}
-frame.src=games[selected].url;$("status").textContent="Loading "+games[selected].title+"…";
+frame.removeAttribute("sandbox");frame.title=games[selected].title+" game";frame.src=games[selected].url;$("status").textContent="Loading "+games[selected].title+"…";
 }
 
 $("openExternal").addEventListener("click",()=>{if(games[selected].url)window.open(games[selected].externalUrl||games[selected].url,"_blank","noopener,noreferrer");});
